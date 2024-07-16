@@ -4,7 +4,6 @@ import 'package:food_recipe/data/model/recipe.dart';
   class RecipeDataSourceImpl implements RecipeDataSource {
  @override
   Future<List<Recipe>> getRecipes() async {
-    // Mock 데이터를 반환하는 예시
     return [
       Recipe(
         title: 'Onsen Tamago',

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:food_recipe/presentation/component/big_button.dart';
 import 'package:food_recipe/presentation/component/input_field.dart';
+import 'package:food_recipe/presentation/screen/home/home.dart';
+import 'package:food_recipe/repository/recipe_repository.dart';
+import 'package:food_recipe/repository/recipe_repository_impl.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
@@ -83,7 +87,17 @@ class SingInPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/icons/social_icons/google.png'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(recipeRepository: RecipeRepositoryImpl(RecipeDataSourceImpl()),),
+                        ),
+                      );
+                    },
+                    child: Image.asset('assets/icons/social_icons/google.png'),
+                  ),
                   const SizedBox(width: 25),
                   Image.asset('assets/icons/social_icons/facebook.png'),
                 ],

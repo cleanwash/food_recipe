@@ -59,9 +59,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/icons/social_icons/facebook.png
-    - assets/icons/social_icons/google.png
-
+    # - assets/icons/social_icons/facebook.png
+    # - assets/icons/social_icons/google.png
+    - assets/icons/social_icons/
+    - assets/icons/bold/
+    - assets/icons/outline/
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
