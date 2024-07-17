@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:food_recipe/presentation/component/big_button.dart';
@@ -7,10 +8,10 @@ import 'package:food_recipe/repository/recipe_repository.dart';
 import 'package:food_recipe/repository/recipe_repository_impl.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
+import 'package:go_router/go_router.dart'; // Import go_router package
 
-
-class SingInPage extends StatelessWidget {
-  const SingInPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,10 @@ class SingInPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              const BigButton(label: 'Sign In'),
+              // const BigButton(label: 'Sign In', 
+              // onPressed: () {  
+              //    context.go('/saved_recipe');
+              // },),
               const SizedBox(height: 24),
               Center(
                 child: Row(
@@ -89,12 +93,7 @@ class SingInPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(recipeRepository: RecipeRepositoryImpl(RecipeDataSourceImpl()),),
-                        ),
-                      );
+                      context.go('/home'); // Navigate to '/home' on Google sign-in
                     },
                     child: Image.asset('assets/icons/social_icons/google.png'),
                   ),
@@ -114,6 +113,10 @@ class SingInPage extends StatelessWidget {
                         TextSpan(
                           text: 'Sign up',
                           style: TextStyles.normalTextRegular.copyWith(color: ColorStyles.secondary100),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              context.go('/sign_up'); 
+                            },
                         ),
                       ],
                     ),

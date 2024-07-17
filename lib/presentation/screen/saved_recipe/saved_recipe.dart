@@ -4,6 +4,7 @@ import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
 import 'package:food_recipe/repository/recipe_repository.dart';
 import 'package:food_recipe/ui/text_styles.dart';
+import 'package:go_router/go_router.dart';
 
 
 class SavedRecipe extends StatelessWidget {
@@ -33,14 +34,25 @@ class SavedRecipe extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator());
                 }
                 final result = snapshot.data!;
+
+
                 switch (result) {
-                  case Success<List<Recipe>>():
-                    return ListView(
-                      padding: EdgeInsets.zero,
-                      children: result.data
-                          .map((e) => RecipeCard(recipe: e))
-                          .toList(),
-                    );
+              case Success<List<Recipe>>():
+                return ListView.builder(
+                  itemCount: result.data.length,
+                  itemBuilder: (context, index) {
+                    final recipe = result.data[index];
+                    return GestureDetector(
+                        onTap: () {
+                          context.push('/saved_recipe_detail', extra: recipe);
+                        },
+                        child: RecipeCard(recipe: recipe));
+                  },
+                );
+
+
+
+
                   case Error<List<Recipe>>():
                     return Text(result.e);
                 }
