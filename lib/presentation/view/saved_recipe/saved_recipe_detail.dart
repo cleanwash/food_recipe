@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:food_recipe/data/model/recipe.dart';
-import 'package:food_recipe/presentation/component/recipe_card.dart';
-import 'package:food_recipe/presentation/screen/saved_recipe/saved_recipe.dart';
-import 'package:food_recipe/repository/recipe_repository.dart';
-import 'package:food_recipe/repository/recipe_repository_impl.dart';
-import 'package:food_recipe/ui/color_styles.dart';
-import 'package:food_recipe/ui/text_styles.dart';
-import 'package:go_router/go_router.dart';
 
 
 class SavedRecipeDetail extends StatelessWidget {
@@ -19,9 +11,9 @@ class SavedRecipeDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Hero(
-        tag: recipe.imgUrl,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Hero(
+          tag: recipe.imgUrl,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -146,38 +138,39 @@ class SavedRecipeDetail extends StatelessWidget {
     );
   }
 }
-void main() {
-  final dataSource = RecipeDataSourceImpl();
-  final repository = RecipeRepositoryImpl(dataSource);
-  runApp(MyApp(repository: repository));
-}
 
-class MyApp extends StatelessWidget {
-  final RecipeRepository repository;
+// void main() {
+//   final dataSource = RecipeDataSourceImpl();
+//   final repository = RecipeRepositoryImpl(dataSource);
+//   runApp(MyApp(repository: repository));
+// }
 
-  const MyApp({super.key, required this.repository});
+// class MyApp extends StatelessWidget {
+//   final RecipeRepository repository;
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: GoRouter(
-        initialLocation: '/saved_recipe',
-        routes: [
-          GoRoute(
-            path: '/saved_recipe',
-            builder: (context, state) {
-              return SavedRecipe(recipeRepository: repository);
-            },
-          ),
-          GoRoute(
-            path: '/recipe_detail/:id',
-            builder: (context, state) {
-              final recipe = state.extra as Recipe;
-              return SavedRecipeDetail(recipe: recipe);
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   const MyApp({super.key, required this.repository});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp.router(
+//       routerConfig: GoRouter(
+//         initialLocation: '/saved_recipe',
+//         routes: [
+//           GoRoute(
+//             path: '/saved_recipe',
+//             builder: (context, state) {
+//               return SavedRecipe(recipeRepository: repository);
+//             },
+//           ),
+//           GoRoute(
+//             path: '/recipe_detail/:id',
+//             builder: (context, state) {
+//               final recipe = state.extra as Recipe;
+//               return SavedRecipeDetail(recipe: recipe);
+//             },
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

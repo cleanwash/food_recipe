@@ -1,11 +1,11 @@
 import 'package:food_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:food_recipe/data/model/recipe.dart';
-import 'package:food_recipe/presentation/screen/home/home.dart';
-import 'package:food_recipe/presentation/screen/saved_recipe/saved_recipe.dart';
-import 'package:food_recipe/presentation/screen/saved_recipe/saved_recipe_detail.dart';
-import 'package:food_recipe/presentation/screen/sign_in/sign_in_page.dart';
-import 'package:food_recipe/presentation/screen/sign_up/sign_up_page.dart';
-import 'package:food_recipe/presentation/screen/splash_screen/splash_screen_page.dart';
+import 'package:food_recipe/presentation/view/home_screen/home_screen.dart';
+import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe.dart';
+import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail.dart';
+import 'package:food_recipe/presentation/view/sign_in/sign_in_page.dart';
+import 'package:food_recipe/presentation/view/sign_up/sign_up_page.dart';
+import 'package:food_recipe/presentation/view/splash_screen/splash_screen_page.dart';
 import 'package:food_recipe/repository/recipe_repository_impl.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,6 +29,10 @@ final router = GoRouter(
     GoRoute(
       path: '/home_screen',
       builder: (context, state) => HomeScreen(recipeRepository: recipeRepository,),
+    ),
+     GoRoute(
+      path: '/saved_recipe',
+      builder: (context, state) => SavedRecipe(recipeRepository: recipeRepository,),
     ),
     GoRoute(
       path: '/saved_recipe_detail',

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/presentation/screen/saved_recipe/saved_recipe.dart';
+import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe.dart';
+import 'package:food_recipe/presentation/view/home_first_page/home_first_page.dart';
 import 'package:food_recipe/repository/recipe_repository.dart';
+import 'package:food_recipe/router/router.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +14,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -23,10 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> widgetOptions = <Widget>[
-      const Text('Home Page'),
-      SavedRecipe(
-        recipeRepository: widget.recipeRepository,
-      ),
+      // const Text('Home Page'),
+      HomeFirstPage(),
+      SavedRecipe(recipeRepository: recipeRepository,),
       const Text('Notification Page'),
       const Text('Profile Page'),
     ];
