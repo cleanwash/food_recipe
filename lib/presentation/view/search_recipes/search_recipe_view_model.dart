@@ -3,10 +3,10 @@ import 'package:food_recipe/core/result.dart';
 import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/repository/recipe_repository.dart';
 
-class SavedRecipeViewModel extends ChangeNotifier {
+class SearchRecipeViewModel extends ChangeNotifier {
   final RecipeRepository recipeRepository;
 
-  SavedRecipeViewModel(this.recipeRepository) {
+  SearchRecipeViewModel(this.recipeRepository) {
     fetchSavedRecipes();
   }
 
@@ -22,6 +22,22 @@ class SavedRecipeViewModel extends ChangeNotifier {
 
     _recipes = await recipeRepository.getRecipes();
 
+    _isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> searchRecipes(String word) async {
+    print("Searching for: $word"); 
+    _isLoading = true;
+    notifyListeners();
+
+    if (word.isEmpty) {
+      await fetchSavedRecipes();
+    } else {
+      _recipes = await recipeRepository.searchRecipes(word);
+    }
+
+    print("Search results: $_recipes"); 
     _isLoading = false;
     notifyListeners();
   }

@@ -136,7 +136,7 @@ class RecipeCard extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: Image.asset(
-                          'assets/icons/outline/book_mark.png',
+                          'assets/icons/bold/book_mark_selected.png',
                           width: 16,
                         ),
                       ),

@@ -87,15 +87,29 @@ class _SignUpPageState extends State<SignUpPage> {
                 onPressed: () {},
               ),
               SizedBox(height: 20),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    'Or Sign in With',
-                    style: TextStyles.smallerTextRegular
-                        .copyWith(color: ColorStyles.gray1),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: ColorStyles.gray1,
+                      thickness: 1,
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Or Sign in With',
+                      style: TextStyles.smallerTextRegular
+                          .copyWith(color: ColorStyles.gray1),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: ColorStyles.gray1,
+                      thickness: 1,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 20),
               Row(
