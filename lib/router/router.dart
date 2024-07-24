@@ -6,6 +6,7 @@ import 'package:food_recipe/presentation/view/home_screen/home_screen.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail_view.dart';
+import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_view_model.dart';
 import 'package:food_recipe/presentation/view/search_recipes/search_recipe.dart';
 import 'package:food_recipe/presentation/view/sign_in/sign_in_page.dart';
 import 'package:food_recipe/presentation/view/sign_up/sign_up_page.dart';
@@ -40,10 +41,13 @@ final router = GoRouter(
         recipeRepository: recipeRepository,
       ),
     ),
-    GoRoute(
+ GoRoute(
       path: '/saved_recipe',
-      builder: (context, state) => SavedRecipe(
-        recipeRepository: recipeRepository,
+      builder: (context, state) => ChangeNotifierProvider<SavedRecipeViewModel>(
+        value: SavedRecipeViewModel(recipeRepository),
+        child: SavedRecipe(
+          recipeRepository: recipeRepository,
+        ),
       ),
     ),
     GoRoute(
