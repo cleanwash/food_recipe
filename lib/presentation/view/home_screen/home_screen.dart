@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> widgetOptions = <Widget>[
-      // const Text('Home Page'),
       HomeFirstPage(),
       SavedRecipe(recipeRepository: recipeRepository,),
       const Text('Notification Page'),

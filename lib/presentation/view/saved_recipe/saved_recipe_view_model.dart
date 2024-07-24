@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/repository/recipe_repository.dart';
 import 'package:food_recipe/core/result.dart';
@@ -19,23 +19,44 @@ class SavedRecipeViewModel with ChangeNotifier {
   Future<void> fetchSavedRecipes() async {
     _isLoading = true;
     notifyListeners();
-
-  //   try {
-  //     final result = await _recipeRepository.getRecipes();
-  //     switch (result) {
-  //       case Success<List<Recipe>>():
-  //         _savedRecipes = result.data;
-  //       case Error<List<Recipe>>():
-  //         _savedRecipes = [];
-  //         print("Error fetching recipes: ${result.e}");
-  //     }
-  //   } catch (e) {
-  //     _savedRecipes = [];
-  //     print("Exception occurred: $e");
-  //   } finally {
-  //     _isLoading = false;
-  //     notifyListeners();
-  //   }
-  // }
+  }
 }
+*/
+
+import 'package:flutter/material.dart';
+import 'package:food_recipe/core/result.dart';
+import 'package:food_recipe/data/model/recipe.dart';
+import 'package:food_recipe/repository/recipe_repository.dart';
+
+class SavedRecipeViewModel extends ChangeNotifier {
+  final RecipeRepository recipeRepository;
+  List<Recipe> _recipes = [];
+  bool _isLoading = false;
+  String _error = '';
+
+  SavedRecipeViewModel(this.recipeRepository) {
+    fetchRecipes();
+  }
+
+  List<Recipe> get recipes => _recipes;
+  bool get isLoading => _isLoading;
+  String get error => _error;
+
+  Future<void> fetchRecipes() async {
+    _isLoading = true;
+    notifyListeners();
+
+    final result = await recipeRepository.getRecipes();
+    
+    switch (result) {
+      case Success<List<Recipe>>():
+        _recipes = result.data;
+        _error = '';
+      case Error<List<Recipe>>():
+        _error = result.e;
+    }
+
+    _isLoading = false;
+    notifyListeners();
+  }
 }

@@ -7,28 +7,25 @@ class IngredientDataSourceImpl implements IngredientDataSource {
     "ingredients": [
       {
         "id": 1,
-        "imageUrl": "http://example.com/tomato.jpg",
-        "title": "Tomato",
-        "weight": "100g"
+        "title": "토마토",
+        "imageUrl":
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/1200px-Tomato_je.jpg",
+        "weight": "500g",
       },
       {
         "id": 2,
-        "imageUrl": "http://example.com/onion.jpg",
-        "title": "Onion",
-        "weight": "50g"
+        "title": "사과",
+        "imageUrl":
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/1200px-Tomato_je.jpg",
+        "weight": "1000g",
       },
       {
         "id": 3,
-        "imageUrl": "http://example.com/garlic.jpg",
-        "title": "Garlic",
-        "weight": "10g"
+        "title": "복숭아",
+        "imageUrl":
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/1200px-Tomato_je.jpg",
+        "weight": "500g",
       },
-      {
-        "id": 4,
-        "imageUrl": "http://example.com/beef.jpg",
-        "title": "Beef",
-        "weight": "200g"
-      }
     ]
   };
 

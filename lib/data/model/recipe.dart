@@ -7,6 +7,7 @@ part 'recipe.g.dart';
 class Recipe with _$Recipe {
 
   factory Recipe({
+    required int id, 
     required String title,
     required String chef, 
     required double rating, 
@@ -18,3 +19,4 @@ class Recipe with _$Recipe {
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
 }
+
