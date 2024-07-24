@@ -1,104 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/data/data_source/creator_profile_data_source.dart';
+import 'package:food_recipe/data/data_source/ingredient_data_source_impl.dart';
+import 'package:food_recipe/data/data_source/procedure_data_source_impl.dart';
+import 'package:food_recipe/data/model/creatorProfile.dart';
 import 'package:food_recipe/data/model/ingredient.dart';
 import 'package:food_recipe/data/model/procedure.dart';
+import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/repository/ingredient_repository.dart';
 import 'package:food_recipe/repository/procedure_repository.dart';
-
-class SavedRecipeDetailView with ChangeNotifier {
-  final IngredientRepository _ingredientRepository;
-  final ProcedureRepository _procedureRepository;
-
-  SavedRecipeDetailView(
-    this._ingredientRepository,
-    this._procedureRepository,
-  ) {
-    fetchIngredients();
-    fetchProcedures();
-  }
+class SavedRecipeDetailViewModel extends ChangeNotifier {
+  final CreatorProfileDataSource creatorDataSource;
+  final IngredientDataSourceImpl ingredientDataSource;
+  final ProcedureDataSourceImpl procedureDataSource;
+  final Recipe recipe;
 
   List<Ingredient> _ingredients = [];
-  List<Ingredient> get ingredients => _ingredients;
-
   List<Procedure> _procedures = [];
+  bool _showIngredients = true;
+  late CreatorProfile _creatorProfile;
+
+  SavedRecipeDetailViewModel({
+    required this.creatorDataSource,
+    required this.ingredientDataSource,
+    required this.procedureDataSource,
+    required this.recipe,
+  });
+
+  List<Ingredient> get ingredients => _ingredients;
   List<Procedure> get procedures => _procedures;
+  bool get showIngredients => _showIngredients;
+  CreatorProfile get creatorProfile => _creatorProfile;
 
-  bool _isLoading = false;
-  bool get isLoading => _isLoading;
-
-  String _error = '';
-  String get error => _error;
-
-  Future<void> fetchIngredients() async {
-    final result = await _ingredientRepository.getIngredients();
-    result.when(
-      success: (ingredients) {
-        _ingredients = ingredients;
-        notifyListeners();
-      },
-      error: (message) {
-        _error = message;
-        notifyListeners();
-      },
-    );
-  }
-
-  Future<void> fetchProcedures() async {
-    final result = await _procedureRepository.getProcedures();
-    result.when(
-      success: (procedures) {
-        _procedures = procedures;
-        notifyListeners();
-      },
-      error: (message) {
-        _error = message;
-        notifyListeners();
-      },
-    );
-  }
-
-  Future<void> getIngredients(int recipeId) async {
-    _isLoading = true;
-    _error = '';
+  void loadData() async {
+    await _loadIngredients();
+    await _loadProcedures();
+    _loadCreatorProfile();
     notifyListeners();
-
-    final result = await _ingredientRepository.getIngredients();
-    result.when(
-      success: (ingredients) {
-        _ingredients = ingredients
-            .where((ingredient) => ingredient.id == recipeId)
-            .toList();
-        _isLoading = false;
-        notifyListeners();
-      },
-      error: (message) {
-        _error = message;
-        _isLoading = false;
-        notifyListeners();
-      },
-    );
   }
 
-  Future<void> getProcedures(int recipeId) async {
-    _isLoading = true;
-    _error = '';
-    notifyListeners();
+  Future<void> _loadIngredients() async {
+    _ingredients = await ingredientDataSource.getIngredients();
+  }
 
-    final result = await _procedureRepository.getProcedures();
-    result.when(
-      success: (procedures) {
-        _procedures = procedures
-            .where((procedure) => procedure.id == recipeId)
-            .toList()
-          ..sort((a, b) => a.stepNum.compareTo(b.stepNum));
-        _isLoading = false;
-        notifyListeners();
-      },
-      error: (message) {
-        _error = message;
-        _isLoading = false;
-        notifyListeners();
-      },
-    );
+  Future<void> _loadProcedures() async {
+    _procedures = await procedureDataSource.getProcedures();
+  }
+
+  void _loadCreatorProfile() {
+    List<CreatorProfile> profiles = creatorDataSource.getCreatorProfiles();
+    _creatorProfile = profiles.first;
+  }
+
+  void toggleIngredients() {
+    _showIngredients = !_showIngredients;
+    notifyListeners();
   }
 }
-

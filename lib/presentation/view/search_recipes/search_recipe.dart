@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/core/change_notifer.dart';
 import 'package:food_recipe/presentation/component/input_field.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
+import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_view_model.dart';
 import 'package:food_recipe/presentation/view/search_recipes/search_recipe_view_model.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
@@ -13,6 +15,8 @@ class SearchRecipe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final viewModel =
+        ChangeNotifierProvider.of<SearchRecipeViewModel>(context).value;
     return Scaffold(
       appBar: AppBar(
         title: Text('Search Recipes', style: TextStyles.mediumTextBold),

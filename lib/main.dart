@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: ColorStyles.white,
       ),
-      // home: HomeScreen(recipeRepository: repository),
       routerConfig: router,
     );
   }

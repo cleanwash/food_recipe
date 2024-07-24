@@ -46,7 +46,6 @@ final router = GoRouter(
         recipeRepository: recipeRepository,
       ),
     ),
-
     GoRoute(
       path: '/saved_recipe_detail',
       builder: (context, state) {
@@ -54,8 +53,6 @@ final router = GoRouter(
         return SavedRecipeDetail(recipe: recipe);
       },
     ),
-
-  
     GoRoute(
       path: '/search_recipe',
       builder: (context, state) {

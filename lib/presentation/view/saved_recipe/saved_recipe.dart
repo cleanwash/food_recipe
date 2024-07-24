@@ -70,9 +70,7 @@ import 'package:go_router/go_router.dart';
 
 class SavedRecipe extends StatelessWidget {
   final RecipeRepository recipeRepository;
-
   const SavedRecipe({super.key, required this.recipeRepository});
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SavedRecipeViewModel>(
@@ -81,10 +79,8 @@ class SavedRecipe extends StatelessWidget {
     );
   }
 }
-
 class _SavedRecipeContent extends StatelessWidget {
   const _SavedRecipeContent();
-
   @override
   Widget build(BuildContext context) {
     final viewModel =
