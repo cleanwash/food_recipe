@@ -5,9 +5,8 @@ import 'package:food_recipe/data/data_source/procedure_data_source_impl.dart';
 import 'package:food_recipe/data/model/creatorProfile.dart';
 import 'package:food_recipe/data/model/ingredient.dart';
 import 'package:food_recipe/data/model/procedure.dart';
-import 'package:food_recipe/data/model/recipe.dart';
-import 'package:food_recipe/repository/ingredient_repository.dart';
-import 'package:food_recipe/repository/procedure_repository.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
+
 class SavedRecipeDetailViewModel extends ChangeNotifier {
   final CreatorProfileDataSource creatorDataSource;
   final IngredientDataSourceImpl ingredientDataSource;

@@ -1,5 +1,5 @@
 import 'package:food_recipe/data/data_source/recipe_data_source.dart';
-import 'package:food_recipe/data/model/recipe.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
 
   class RecipeDataSourceImpl implements RecipeDataSource {
  @override

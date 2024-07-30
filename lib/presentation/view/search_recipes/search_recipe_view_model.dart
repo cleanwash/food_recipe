@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/core/result.dart';
-import 'package:food_recipe/data/model/recipe.dart';
-import 'package:food_recipe/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
+import 'package:food_recipe/domain/use_case/get_recipe_use_case.dart';
+import 'package:food_recipe/domain/use_case/search_recipe_use_case.dart';
 
 class SearchRecipeViewModel extends ChangeNotifier {
-  final RecipeRepository recipeRepository;
+  final GetRecipeUseCase getRecipeUseCase;
+  final SearchRecipeUseCase searchRecipeUseCase;
 
-  SearchRecipeViewModel(this.recipeRepository) {
-    fetchSavedRecipes();
+  SearchRecipeViewModel({
+    required this.getRecipeUseCase,
+    required this.searchRecipeUseCase
+  }) {
+    getSavedRecipes();
   }
 
   Result<List<Recipe>>? _recipes;
@@ -16,28 +21,26 @@ class SearchRecipeViewModel extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  Future<void> fetchSavedRecipes() async {
+  Future<void> getSavedRecipes() async {
     _isLoading = true;
     notifyListeners();
 
-    _recipes = await recipeRepository.getRecipes();
+    _recipes = await getRecipeUseCase.execute();
 
     _isLoading = false;
     notifyListeners();
   }
 
   Future<void> searchRecipes(String word) async {
-    print("Searching for: $word"); 
+    print("Searching for: $word");
+
     _isLoading = true;
     notifyListeners();
 
-    if (word.isEmpty) {
-      await fetchSavedRecipes();
-    } else {
-      _recipes = await recipeRepository.searchRecipes(word);
-    }
+    _recipes = await searchRecipeUseCase.execute(word);
 
-    print("Search results: $_recipes"); 
+    print("Search results: $_recipes");
+
     _isLoading = false;
     notifyListeners();
   }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/core/change_notifer.dart';
 import 'package:food_recipe/presentation/component/input_field.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
-import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_view_model.dart';
 import 'package:food_recipe/presentation/view/search_recipes/search_recipe_view_model.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
@@ -11,12 +9,11 @@ import 'package:go_router/go_router.dart';
 class SearchRecipe extends StatelessWidget {
   final SearchRecipeViewModel searchRecipeViewModel;
 
-  const SearchRecipe({super.key, required this.searchRecipeViewModel});
+  const SearchRecipe({Key? key, required this.searchRecipeViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-      final viewModel =
-        ChangeNotifierProvider.of<SearchRecipeViewModel>(context).value;
     return Scaffold(
       appBar: AppBar(
         title: Text('Search Recipes', style: TextStyles.mediumTextBold),
@@ -54,7 +51,6 @@ class SearchRecipe extends StatelessWidget {
                     hintText: 'search',
                     obscureText: false,
                     onChanged: (value) {
-                      print("Input changed는: $value입니다, $value는 무엇일까요?"); // 디버그 프린트 추가
                       searchRecipeViewModel.searchRecipes(value);
                     },
                   ),

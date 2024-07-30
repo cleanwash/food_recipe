@@ -4,7 +4,7 @@ import 'package:food_recipe/data/data_source/ingredient_data_source_impl.dart';
 import 'package:food_recipe/data/data_source/procedure_data_source_impl.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail_view.dart';
 import 'package:provider/provider.dart';
-import 'package:food_recipe/data/model/recipe.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/presentation/component/creator_profile_card.dart';
 
 class SavedRecipeDetail extends StatefulWidget {

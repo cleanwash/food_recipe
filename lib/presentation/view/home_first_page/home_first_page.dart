@@ -99,19 +99,19 @@ class HelloJegaWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              // GestureDetector(
-              //   onTap: () {
-              //     GoRouter.of(context).go('/saved_recipes');
-              //   },
-              //   child: Container(
-              //     padding: const EdgeInsets.all(12),
-              //     decoration: BoxDecoration(
-              //       color: Colors.green,
-              //       borderRadius: BorderRadius.circular(12),
-              //     ),
-              //     child: const Icon(Icons.tune, color: Colors.white),
-              //   ),
-              // ),
+              GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).go('/saved_recipes');
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Icon(Icons.tune, color: Colors.white),
+                ),
+              ),
             ],
           ),
         ],

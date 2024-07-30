@@ -4,8 +4,8 @@ import 'package:food_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:food_recipe/presentation/component/big_button.dart';
 import 'package:food_recipe/presentation/component/input_field.dart';
 import 'package:food_recipe/presentation/view/home_screen/home_screen.dart';
-import 'package:food_recipe/repository/recipe_repository.dart';
-import 'package:food_recipe/repository/recipe_repository_impl.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/repository/recipe_repository_impl.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 import 'package:go_router/go_router.dart'; // Import go_router package

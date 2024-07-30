@@ -5,27 +5,6 @@ import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 import 'package:go_router/go_router.dart';
 
-// void main() {
-//   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-//   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Cooking App',
-//       theme: ThemeData(
-//         primarySwatch: Colors.green,
-//       ),
-//       home: const SplashScreenPage(),
-//     );
-//   }
-// }
-
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
 
@@ -118,11 +97,10 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   ),
                   const SizedBox(height: 30),
                   const SizedBox(height: 30),
-                 
                   SizedBox(
                     child: BigButton(
                       label: 'Start Cooking',
-                     path:'/sign_in',
+                      path: '/sign_in',
                     ),
                   ),
                   const SizedBox(height: 50),

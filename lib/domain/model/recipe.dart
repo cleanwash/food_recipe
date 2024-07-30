@@ -5,18 +5,15 @@ part 'recipe.g.dart';
 
 @freezed
 class Recipe with _$Recipe {
-
   factory Recipe({
-    required int id, 
+    required int id,
     required String title,
-    required String chef, 
-    required double rating, 
-    required int cookingTime, 
-    required bool isFavorite, 
+    required String chef,
+    required double rating,
+    required int cookingTime,
+    required bool isFavorite,
     required String imgUrl,
-  }
-  ) = _Recipe;
+  }) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
 }
-

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/data/model/recipe.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_view_model.dart';
-import 'package:food_recipe/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';

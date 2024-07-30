@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
+
 class ChangeNotifierProvider<T extends ChangeNotifier> extends InheritedWidget {
   final T value;
 
   const ChangeNotifierProvider({
-    super.key,
-    required super.child,
+    Key? key,
+    required Widget child,
     required this.value,
-  });
+  }) : super(key: key, child: child);
 
-  static ChangeNotifierProvider<T> of<T extends ChangeNotifier>(
-      BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<ChangeNotifierProvider<T>>()!;
+  static ChangeNotifierProvider<T> of<T extends ChangeNotifier>(BuildContext context) {
+    final provider = context.dependOnInheritedWidgetOfExactType<ChangeNotifierProvider<T>>();
+    if (provider == null) {
+      throw FlutterError('ChangeNotifierProvider<$T> not found in context');
+    }
+    return provider;
   }
 
   @override

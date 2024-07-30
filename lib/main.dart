@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/repository/recipe_repository.dart';
-import 'package:food_recipe/repository/recipe_repository_impl.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/repository/recipe_repository_impl.dart';
 import 'package:food_recipe/data/data_source/recipe_data_source_impl.dart';
 import 'package:food_recipe/router/router.dart';
 import 'package:food_recipe/ui/color_styles.dart';

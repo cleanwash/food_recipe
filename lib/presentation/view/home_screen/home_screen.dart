@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe.dart';
 import 'package:food_recipe/presentation/view/home_first_page/home_first_page.dart';
-import 'package:food_recipe/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
 import 'package:food_recipe/router/router.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 
