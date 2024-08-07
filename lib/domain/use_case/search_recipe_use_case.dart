@@ -1,14 +1,14 @@
 import 'package:food_recipe/core/result.dart';
 import 'package:food_recipe/domain/model/recipe.dart';
-import 'package:food_recipe/domain/use_case/get_recipe_use_case.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
 
 class SearchRecipeUseCase {
-  final GetRecipeUseCase getRecipeUseCase;
+  final RecipeRepository recipeRepository;
 
-  SearchRecipeUseCase(this.getRecipeUseCase);
+  SearchRecipeUseCase(this.recipeRepository);
 
   Future<Result<List<Recipe>>> execute(String query) async {
-    final result = await getRecipeUseCase.execute();
+    final result = await recipeRepository.getRecipes();
     
     return result.when(
       success: (recipes) {

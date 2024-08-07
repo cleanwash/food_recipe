@@ -5,15 +5,16 @@ import 'package:food_recipe/presentation/view/search_recipes/search_recipe_view_
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class SearchRecipe extends StatelessWidget {
-  final SearchRecipeViewModel searchRecipeViewModel;
 
-  const SearchRecipe({Key? key, required this.searchRecipeViewModel})
+  const SearchRecipe({Key? key})
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+ Widget build(BuildContext context) {
+    final searchRecipeViewModel = Provider.of<SearchRecipeViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Search Recipes', style: TextStyles.mediumTextBold),

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_view_model.dart';
-import 'package:food_recipe/domain/repository/recipe_repository.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 
 class SavedRecipe extends StatelessWidget {
-  final RecipeRepository recipeRepository;
-  const SavedRecipe({super.key, required this.recipeRepository});
+  const SavedRecipe({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SavedRecipeViewModel>(
-      create: (_) => SavedRecipeViewModel(recipeRepository),
+      create: (_) => GetIt.instance<SavedRecipeViewModel>(),
       child: const _SavedRecipeContent(),
     );
   }

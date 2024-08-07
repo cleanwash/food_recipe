@@ -3,11 +3,11 @@ import 'package:food_recipe/ui/color_styles.dart';
 import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(const HomeFirstPage());
+  runApp(HomeFirstPage());
 }
 
 class HomeFirstPage extends StatelessWidget {
-  const HomeFirstPage({Key? key}) : super(key: key);
+  HomeFirstPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +91,10 @@ class HelloJegaWidget extends StatelessWidget {
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: ColorStyles.gray1), 
+                      borderSide: BorderSide(color: ColorStyles.gray1),
                     ),
                     filled: true,
-                    fillColor: Colors.grey[200], 
+                    fillColor: Colors.grey[200],
                   ),
                 ),
               ),

@@ -3,15 +3,15 @@ import 'package:food_recipe/core/result.dart';
 import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/domain/use_case/get_recipe_use_case.dart';
 import 'package:food_recipe/domain/use_case/search_recipe_use_case.dart';
+import 'package:get_it/get_it.dart';
 
 class SearchRecipeViewModel extends ChangeNotifier {
   final GetRecipeUseCase getRecipeUseCase;
   final SearchRecipeUseCase searchRecipeUseCase;
 
-  SearchRecipeViewModel({
-    required this.getRecipeUseCase,
-    required this.searchRecipeUseCase
-  }) {
+  SearchRecipeViewModel()
+      : getRecipeUseCase = GetIt.instance<GetRecipeUseCase>(),
+        searchRecipeUseCase = GetIt.instance<SearchRecipeUseCase>() {
     getSavedRecipes();
   }
 
