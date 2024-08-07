@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/presentation/component/recipe_category_picker.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:go_router/go_router.dart';
 
@@ -114,6 +115,8 @@ class HelloJegaWidget extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 16),
+          RecipeCategoryPicker(onSelectCategory: (String) {})
         ],
       ),
     );
