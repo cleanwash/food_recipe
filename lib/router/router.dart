@@ -1,4 +1,5 @@
 import 'package:food_recipe/domain/model/recipe.dart';
+import 'package:food_recipe/presentation/view/home_first_page/home_first_page.dart';
 import 'package:food_recipe/presentation/view/home_screen/home_screen.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail.dart';
@@ -34,6 +35,10 @@ final router = GoRouter(
     GoRoute(
       path: '/saved_recipe',
       builder: (context, state) => const SavedRecipe(),
+    ),
+    GoRoute(
+      path: '/home_first_page',
+      builder: (context, state) =>   HomeFirstPage(),
     ),
     GoRoute(
       path: '/saved_recipe_detail',

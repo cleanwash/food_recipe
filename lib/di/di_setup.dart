@@ -9,6 +9,7 @@ import 'package:food_recipe/domain/repository/recipe_repository.dart';
 import 'package:food_recipe/domain/repository/recipe_repository_impl.dart';
 import 'package:food_recipe/domain/use_case/get_recipe_use_case.dart';
 import 'package:food_recipe/domain/use_case/search_recipe_use_case.dart';
+import 'package:food_recipe/presentation/view/home_first_page/home_first_page_view_model.dart';
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_view_model.dart';
 import 'package:food_recipe/presentation/view/search_recipes/search_recipe_view_model.dart';
 import 'package:food_recipe/repository/ingredient_repository.dart';
@@ -34,4 +35,6 @@ void diSetup() {
 
   getIt.registerFactory<SavedRecipeViewModel>(() => SavedRecipeViewModel());
   getIt.registerFactory<SearchRecipeViewModel>(() => SearchRecipeViewModel());
+    getIt.registerFactory<HomeFirstPageViewModel>(() => HomeFirstPageViewModel(getIt()));
+
 }

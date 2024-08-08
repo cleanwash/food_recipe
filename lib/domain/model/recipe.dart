@@ -13,6 +13,7 @@ class Recipe with _$Recipe {
     required int cookingTime,
     required bool isFavorite,
     required String imgUrl,
+    required String foodOrigin,
   }) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);

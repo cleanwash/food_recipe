@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:food_recipe/presentation/component/input_field.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
 import 'package:food_recipe/presentation/view/search_recipes/search_recipe_view_model.dart';
@@ -8,22 +9,17 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class SearchRecipe extends StatelessWidget {
-
-  const SearchRecipe({Key? key})
-      : super(key: key);
+  const SearchRecipe({Key? key}) : super(key: key);
 
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     final searchRecipeViewModel = Provider.of<SearchRecipeViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Search Recipes', style: TextStyles.mediumTextBold),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, size: 20.0),
-          onPressed: () {
-            context.pop();
-          },
-        ),
+            icon: const Icon(Icons.arrow_back, size: 20.0),
+            onPressed: () => context.go('/home_first_page')),
         actions: [
           PopupMenuButton(
             itemBuilder: (BuildContext context) {
@@ -102,7 +98,7 @@ class SearchRecipe extends StatelessWidget {
                         itemCount: recipes.length,
                         itemBuilder: (context, index) {
                           final recipe = recipes[index];
-                          return GestureDetector(
+                          return InkWell(
                             onTap: () =>
                                 context.push('/recipe_details', extra: recipe),
                             child: Hero(

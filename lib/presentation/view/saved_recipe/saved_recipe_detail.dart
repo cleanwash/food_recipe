@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/data/data_source/creator_profile_data_source.dart';
-import 'package:food_recipe/data/data_source/ingredient_data_source_impl.dart';
-import 'package:food_recipe/data/data_source/procedure_data_source_impl.dart';
+
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail_view.dart';
 import 'package:provider/provider.dart';
 import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/presentation/component/creator_profile_card.dart';
-import 'package:get_it/get_it.dart';
 
 class SavedRecipeDetail extends StatelessWidget {
   final Recipe recipe;
@@ -25,12 +22,12 @@ class SavedRecipeDetail extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.of(context).pop(),
               ),
               actions: [
                 IconButton(
-                  icon: Icon(Icons.more_vert),
+                  icon: const Icon(Icons.more_vert),
                   onPressed: () {},
                 ),
               ],
@@ -59,18 +56,19 @@ class SavedRecipeDetail extends StatelessWidget {
                           top: 8,
                           right: 8,
                           child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
                               children: [
-                                Icon(Icons.star, color: Colors.amber, size: 16),
-                                SizedBox(width: 4),
+                                const Icon(Icons.star, color: Colors.amber, size: 16),
+                                const SizedBox(width: 4),
                                 Text(
                                   recipe.rating.toString(),
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -82,26 +80,27 @@ class SavedRecipeDetail extends StatelessWidget {
                           child: Row(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(8),
-                                child: Icon(
+                                padding: const EdgeInsets.all(8),
+                                child: const Icon(
                                   Icons.timer_sharp,
                                   color: Colors.white,
                                   size: 24,
                                 ),
                               ),
-                              SizedBox(width: 8),
+                              const SizedBox(width: 8),
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 4),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text('${recipe.cookingTime} min'),
                               ),
-                              SizedBox(width: 8),
+                              const SizedBox(width: 8),
                               Container(
-                                padding: EdgeInsets.all(8),
-                                decoration: BoxDecoration(
+                                padding: const EdgeInsets.all(8),
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                   shape: BoxShape.circle,
                                 ),
@@ -130,13 +129,13 @@ class SavedRecipeDetail extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     recipe.title,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   '(13k Reviews)',
                                   style: TextStyle(
                                     color: Colors.grey,
@@ -145,34 +144,47 @@ class SavedRecipeDetail extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16),
-                            CreatorProfileCard(creatorProfile: viewModel.creatorProfile),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
+                            CreatorProfileCard(
+                                creatorProfile: viewModel.creatorProfile),
+                            const SizedBox(height: 16),
                             Row(
                               children: [
                                 Expanded(
                                   child: ElevatedButton(
-                                    onPressed: () => viewModel.toggleIngredients(),
-                                    child: Text('Ingredient'),
+                                    onPressed: () =>
+                                        viewModel.toggleIngredients(),
+                                    child: const Text('Ingredient'),
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: viewModel.showIngredients ? Colors.green : Colors.white,
-                                      foregroundColor: viewModel.showIngredients ? Colors.white : Colors.green,
-                                      side: BorderSide(color: Colors.green),
+                                      backgroundColor: viewModel.showIngredients
+                                          ? Colors.green
+                                          : Colors.white,
+                                      foregroundColor: viewModel.showIngredients
+                                          ? Colors.white
+                                          : Colors.green,
+                                      side: const BorderSide(color: Colors.green),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: ElevatedButton(
-                                    onPressed: () => viewModel.toggleIngredients(),
-                                    child: Text('Procedure'),
+                                    onPressed: () =>
+                                        viewModel.toggleIngredients(),
+                                    child: const Text('Procedure'),
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: !viewModel.showIngredients ? Colors.green : Colors.white,
-                                      foregroundColor: !viewModel.showIngredients ? Colors.white : Colors.green,
-                                      side: BorderSide(color: Colors.green),
+                                      backgroundColor:
+                                          !viewModel.showIngredients
+                                              ? Colors.green
+                                              : Colors.white,
+                                      foregroundColor:
+                                          !viewModel.showIngredients
+                                              ? Colors.white
+                                              : Colors.green,
+                                      side: const BorderSide(color: Colors.green),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
@@ -181,29 +193,30 @@ class SavedRecipeDetail extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Row(
                               children: [
-                                Icon(Icons.restaurant, color: Colors.grey),
-                                SizedBox(width: 8),
-                                Text('1 serve'),
-                                Spacer(),
+                                const Icon(Icons.restaurant, color: Colors.grey),
+                                const SizedBox(width: 8),
+                                const Text('1 serve'),
+                                const Spacer(),
                                 Text(
                                   viewModel.showIngredients
                                       ? '${viewModel.ingredients.length} items'
                                       : '${viewModel.procedures.length} steps',
-                                  style: TextStyle(color: Colors.grey),
+                                  style: const TextStyle(color: Colors.grey),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             if (viewModel.showIngredients)
                               ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: viewModel.ingredients.length,
                                 itemBuilder: (context, index) {
-                                  final ingredient = viewModel.ingredients[index];
+                                  final ingredient =
+                                      viewModel.ingredients[index];
                                   return Card(
                                     margin: const EdgeInsets.only(bottom: 8.0),
                                     child: Padding(
@@ -211,7 +224,8 @@ class SavedRecipeDetail extends StatelessWidget {
                                       child: Row(
                                         children: [
                                           ClipRRect(
-                                            borderRadius: BorderRadius.circular(8.0),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                             child: Image.network(
                                               ingredient.imageUrl,
                                               width: 50,
@@ -223,7 +237,7 @@ class SavedRecipeDetail extends StatelessWidget {
                                           Expanded(
                                             child: Text(
                                               ingredient.title,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -231,7 +245,7 @@ class SavedRecipeDetail extends StatelessWidget {
                                           ),
                                           Text(
                                             ingredient.weight,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.grey,
                                             ),
@@ -245,16 +259,17 @@ class SavedRecipeDetail extends StatelessWidget {
                             else
                               ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: viewModel.procedures.length,
                                 itemBuilder: (context, index) {
                                   final procedure = viewModel.procedures[index];
                                   return Card(
-                                    margin: EdgeInsets.only(bottom: 16),
+                                    margin: const EdgeInsets.only(bottom: 16),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16),
+                                      padding: const EdgeInsets.all(16),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'Step ${procedure.stepNum}',
@@ -266,7 +281,8 @@ class SavedRecipeDetail extends StatelessWidget {
                                           const SizedBox(height: 8),
                                           Text(
                                             procedure.description,
-                                            style: const TextStyle(fontSize: 16),
+                                            style:
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ],
                                       ),
