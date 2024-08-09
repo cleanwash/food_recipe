@@ -6,6 +6,7 @@ import 'package:food_recipe/data/model/creatorProfile.dart';
 import 'package:food_recipe/data/model/ingredient.dart';
 import 'package:food_recipe/data/model/procedure.dart';
 import 'package:food_recipe/domain/model/recipe.dart';
+import 'package:food_recipe/domain/use_case/recipe_link_use_case.dart';
 import 'package:get_it/get_it.dart';
 
 class SavedRecipeDetailViewModel extends ChangeNotifier {
@@ -13,15 +14,17 @@ class SavedRecipeDetailViewModel extends ChangeNotifier {
   final IngredientDataSource ingredientDataSource;
   final ProcedureDataSource procedureDataSource;
   final Recipe recipe;
+  final CopyLinkUseCase copyLinkUseCase;
 
   List<Ingredient> _ingredients = [];
   List<Procedure> _procedures = [];
   bool _showIngredients = true;
   late CreatorProfile _creatorProfile;
 
-SavedRecipeDetailViewModel({required this.recipe})
+  SavedRecipeDetailViewModel({required this.recipe})
       : creatorDataSource = GetIt.instance<CreatorProfileDataSource>(),
         ingredientDataSource = GetIt.instance<IngredientDataSource>(),
+        copyLinkUseCase = GetIt.instance<CopyLinkUseCase>(),
         procedureDataSource = GetIt.instance<ProcedureDataSource>() {
     loadData();
   }
@@ -54,5 +57,10 @@ SavedRecipeDetailViewModel({required this.recipe})
   void toggleIngredients() {
     _showIngredients = !_showIngredients;
     notifyListeners();
+  }
+
+  Future<void> copyRecipeLink() async {
+    String link = 'app.Recipe.co/';
+    await copyLinkUseCase.execute(link);
   }
 }

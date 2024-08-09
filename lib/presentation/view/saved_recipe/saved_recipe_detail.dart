@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/presentation/component/pop_menu_button.dart';
+import 'package:food_recipe/presentation/component/recipe_link_alert_dialog.dart';
 
 import 'package:food_recipe/presentation/view/saved_recipe/saved_recipe_detail_view.dart';
 import 'package:provider/provider.dart';
@@ -26,9 +28,18 @@ class SavedRecipeDetail extends StatelessWidget {
                 onPressed: () => Navigator.of(context).pop(),
               ),
               actions: [
-                IconButton(
-                  icon: const Icon(Icons.more_vert),
-                  onPressed: () {},
+                PopMenuButton(
+                  onSelected: (String value) {
+                    if (value == 'share') {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            RecipeLinkAlertDialog(
+                          viewModel: viewModel,
+                        ),
+                      );
+                    };
+                  },
                 ),
               ],
             ),
@@ -64,11 +75,13 @@ class SavedRecipeDetail extends StatelessWidget {
                             ),
                             child: Row(
                               children: [
-                                const Icon(Icons.star, color: Colors.amber, size: 16),
+                                const Icon(Icons.star,
+                                    color: Colors.amber, size: 16),
                                 const SizedBox(width: 4),
                                 Text(
                                   recipe.rating.toString(),
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -162,7 +175,8 @@ class SavedRecipeDetail extends StatelessWidget {
                                       foregroundColor: viewModel.showIngredients
                                           ? Colors.white
                                           : Colors.green,
-                                      side: const BorderSide(color: Colors.green),
+                                      side:
+                                          const BorderSide(color: Colors.green),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
@@ -184,7 +198,8 @@ class SavedRecipeDetail extends StatelessWidget {
                                           !viewModel.showIngredients
                                               ? Colors.white
                                               : Colors.green,
-                                      side: const BorderSide(color: Colors.green),
+                                      side:
+                                          const BorderSide(color: Colors.green),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
@@ -196,7 +211,8 @@ class SavedRecipeDetail extends StatelessWidget {
                             const SizedBox(height: 16),
                             Row(
                               children: [
-                                const Icon(Icons.restaurant, color: Colors.grey),
+                                const Icon(Icons.restaurant,
+                                    color: Colors.grey),
                                 const SizedBox(width: 8),
                                 const Text('1 serve'),
                                 const Spacer(),
