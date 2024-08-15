@@ -5,10 +5,10 @@ class ChangeNotifierProvider<T extends ChangeNotifier> extends InheritedWidget {
   final T value;
 
   const ChangeNotifierProvider({
-    Key? key,
-    required Widget child,
+    super.key,
+    required super.child,
     required this.value,
-  }) : super(key: key, child: child);
+  });
 
   static ChangeNotifierProvider<T> of<T extends ChangeNotifier>(BuildContext context) {
     final provider = context.dependOnInheritedWidgetOfExactType<ChangeNotifierProvider<T>>();
@@ -23,3 +23,4 @@ class ChangeNotifierProvider<T extends ChangeNotifier> extends InheritedWidget {
     return value != oldWidget.value;
   }
 }
+

@@ -4,7 +4,8 @@ import 'package:food_recipe/router/router.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 
 void main() {
-  diSetup();
+
+  diSetup(environment: Environment.prod); //.prod
   runApp(const MyApp());
 }
 

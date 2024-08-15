@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/core/dev_prod.dart';
 import 'package:food_recipe/presentation/component/recipe_category_picker.dart';
 import 'package:food_recipe/presentation/component/recipe_card.dart';
 import 'package:food_recipe/ui/color_styles.dart';
@@ -51,31 +52,32 @@ class HomeFirstPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              'Hello Jega',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'What are you cooking today?',
-              style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w400),
-            ),
-          ],
-        ),
-        CircleAvatar(
-          backgroundColor: Colors.orange[100],
-          child: Image.asset('assets/icons/bold/avatar.png'),
-        ),
-      ],
-    );
-  }
+Widget _buildHeader() {
+  final config = GetIt.I<EnvironmentConfig>();
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            config.greetingMessage,
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 8),
+          Text(
+            config.subtitleMessage,
+            style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w400),
+          ),
+        ],
+      ),
+      CircleAvatar(
+        backgroundColor: Colors.orange[100],
+        child: Image.asset('assets/icons/bold/avatar.png'),
+      ),
+    ],
+  );
+}
 
   Widget _buildSearchBar(BuildContext context) {
     return Row(

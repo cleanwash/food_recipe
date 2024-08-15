@@ -1,7 +1,7 @@
 import 'package:food_recipe/core/result.dart';
 import 'package:food_recipe/data/data_source/procedure_data_source.dart';
 import 'package:food_recipe/data/model/procedure.dart';
-import 'package:food_recipe/repository/procedure_repository.dart';
+import 'package:food_recipe/domain/repository/procedure_repository.dart';
 
 class ProcedureRepositoryImpl implements ProcedureRepository {
   final ProcedureDataSource _dataSource;

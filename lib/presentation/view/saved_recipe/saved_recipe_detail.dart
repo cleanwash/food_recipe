@@ -38,7 +38,7 @@ class SavedRecipeDetail extends StatelessWidget {
                           viewModel: viewModel,
                         ),
                       );
-                    };
+                    }
                   },
                 ),
               ],

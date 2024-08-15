@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/presentation/component/recipe_category_picker_view.dart';
+import 'package:food_recipe/data/data_source/recipe_category_picker_data_source.dart';
 
 class RecipeCategoryPicker extends StatefulWidget {
   final Function(String) onCategorySelected;
